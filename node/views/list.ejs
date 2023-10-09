@@ -37,16 +37,17 @@
  </head>
  <body>
       <div class="container">
-        <h1 class="mt-5"> Todo app</h1> <button onclick="movepage()">추가</button>
+        <h1 class="mt-5"> Todo app</h1> <button onclick="movepage()" class="btn btn-primary" >추가</button>
         <div class="row mt-4">
           <div class="col-md-6">
-            <h2>할일 목록</h2>
+            <h2>할 일 목록</h2>
             <%if(items.length === 0 ) { %>
-              <p>할일 목록이 존재하지 않습니다.</p>
+              <p>할 일 목록이 존재하지 않습니다.</p>
             <% } else { %>
             <ul class="list-group">
               <% for (var item of items) { %>
-                <li class="list-group-item"><%= item.title %>
+                <li class="list-group-item">
+                   <a href="/detail/<%= item.id %>"><%= item.title %></a>
                   <button 
                   class="btn btn-secondary btn-sm float-end ms-2"
                   onclick="showEditForm('<%= item.id %>')"
@@ -75,7 +76,7 @@
                 </div>
               </li>
 
-              <% }%>
+              <% } %>
             </ul>
             <% } %>
           </div>

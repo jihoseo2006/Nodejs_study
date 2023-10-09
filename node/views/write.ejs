@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link 
-    rel="stylesheet" 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
-  >
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
+
 <body>
   <div class="container">
     <h1 class="mt-5">Todo App</h1>
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <h2>할일 추가</h2>
+        <h2>할 일 추가</h2>
         <form action="/write" method="POST">
           <div class="input-group mb-3">
             <input 
-              type="text"
-              class="form-control"
-              name="title"
-              placeholder="Enter item"
-              required
+              type="text" 
+              class="form-control" 
+              name="title" 
+              placeholder="Enter item" 
+              required 
             />
+            </div>
+            <div class="input-group mb-3">
+            <textarea 
+              class="form-control" 
+              id="exampleFormControlTextarea1"
+              name="contents"
+              rows="3"
+              ></textarea>
+            </div>
+            <div class="input-group mb-3">
+              <select 
+                class="form-select" 
+                aria-label="Default select example"
+                name="rank"  
+              >
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option selected value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
+              </select>
+            </div>
             <button type="submit" class="btn btn-primary">추가</button>
-          </div>
         </form>
       </div>
     </div>
   </div>
 </body>
+
 </html>

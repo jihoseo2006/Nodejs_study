@@ -37,22 +37,19 @@ app.get("/todoList", function (req, res) {
 
 
 app.get("/write", function (req, res) {
-  // const data = readData();
-
-  // const newItemId = Date.now();
-
-  // const newItem = "집에 가기....";
-
-  // const newItemObject = { id: newItemId, title: newItem };
-
-  // data.push(newItemObject);
-
-  // writeData(data);
-
-  // res.send("저장에 성공했습니다.");
-  // res.redirect("/")
-
   res.render("write");
+});
+
+app.get("/detail/:id", function (req, res) {
+
+  console.log("pathVariable");
+  console.log(req.params.id);
+
+  const data = readData();
+  const detailData = data.find((p) => p.id === parseInt(req.params.id));
+ 
+
+  res.render("detail", {item: detailData});
 });
 
 //데이터 작성하기
@@ -63,7 +60,32 @@ app.post("/write", function (req, res) {
 
   const newItem = req.body.title;
 
-  const newItemObject = { id: newItemId, title: newItem };
+  const newContentsItem = req.body.contents;
+  
+  // 날짜 포메팅 함수
+  function leftPad(value) {
+    if (value >= 10) {
+        return value;
+    }
+
+    return `0${value}`;
+  }
+
+  function toStringByFormatting(source, delimiter = '-') {
+      const year = source.getFullYear();
+      const month = leftPad(source.getMonth() + 1);
+      const day = leftPad(source.getDate());
+
+      return [year, month, day].join(delimiter);
+  }
+  // 날짜 포메팅 함수
+
+
+  const newRegistItem = toStringByFormatting(new Date());
+
+  const newRank = req.body.rank;
+
+  const newItemObject = { id: newItemId, title: newItem, contents: newContentsItem, registDt: newRegistItem, rank: newRank};
 
   data.push(newItemObject);
 
